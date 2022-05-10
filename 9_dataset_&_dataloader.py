@@ -74,4 +74,4 @@ for epoch in range(num_epochs):
             print(f'Epoch {epoch+1}/{num_epochs}, iteration {i+1}/{n_iterations}, inputs {inputs.shape}, labels {labels.shape}')
 
 torchvision.dataset.MNIST()
-# fashion mnist, cifrar, coco
+# fashion mnist, cifar, coco

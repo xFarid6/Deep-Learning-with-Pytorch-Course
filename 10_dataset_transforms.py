@@ -68,7 +68,30 @@ class MyDataSet(DataSet):
         return sample
 
 
-class ToTensor:
+class ToTensor: # defining a custom transform
     def __call__(self, sample):
-        x, y = sample
-        return torch.from_numpy(x), torch.from_numpy(y)
+        inputs, targets = sample
+        return torch.from_numpy(inputs), torch.from_numpy(targets)
+
+
+class MulTransform:
+    def __init__(self, factor):
+        self.factor = factor
+    
+    def __call__(self, sample):
+        inputs, targets = sample
+        return inputs * self.factor, targets
+
+
+dataset = WineDataset(transform=ToTensor())
+first_data = dataset[0]
+features, labels = first_data
+print(features, labels)
+print(type(features), type(labels))
+
+composed = torchvision.transforms.Compose([ToTensor(), MulTransform(2)])
+dataset = WineDataset(transform=composed)
+first_data = dataset[0]
+features, labels = first_data
+print(features, labels)
+print(type(features), type(labels))
