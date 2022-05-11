@@ -1,0 +1,3 @@
+just know it is possible to analize the model and get various data about it
+using tensor board, a tool that allows you to visualize the data that you are getting from the model
+developed by the guys of tensorflow, but we can use it with pytorch anyway
